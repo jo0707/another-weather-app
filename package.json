@@ -1,0 +1,18 @@
+{
+    "name": "another-weather-app",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.ts",
+    "type": "module",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "watchTypescript": "tsc -w",
+        "watchTailwind": "npx tailwindcss -i ./public/input.css -o ./public/styles.css --watch",
+        "dev": "concurrently \"npm run watchTypescript\" \"npm run watchTailwind\""
+    },
+    "author": "",
+    "license": "ISC",
+    "dependencies": {
+        "concurrently": "^8.2.2"
+    }
+}

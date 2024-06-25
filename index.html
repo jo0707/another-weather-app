@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Yet Another Weather App</title>
+        <link rel="stylesheet" href="/public/styles.css" />
+    </head>
+    <body class="">
+        <div>
+            <h3 class="text-3xl">Yet Another</h3>
+            <h1>Weather App</h1>
+
+            <div>
+                <p>Weather in</p>
+                <h3 id="cityTitle">Jakarta</h3>
+                <img id="icon" src="http://openweathermap.org/img/wn/03n.png" alt="Weather Icon" />
+                <h2 id="temperature">25°C</h2>
+                <p id="status">Rain</p>
+                <p id="description">Light rain</p>
+                <p id="windspeed">Wind Speed : - m/s</p>
+                <p id="humidity">Humidity : - %</p>
+                <p id="pressure">Pressure : - hPa</p>
+            </div>
+
+            <form id="searchForm">
+                <input type="text" id="city" name="city" placeholder="City" />
+                <button id="search" type="submit">Search</button>
+            </form>
+
+            <div>
+                <p id="error"></p>
+            </div>
+
+            <!-- show forecast in 5 items -->
+            <div id="forecastContainer">
+                <ul class="flex">
+                    <li>
+                        <p>13:00</p>
+                        <img src="http://openweathermap.org/img/wn/03n.png" alt="Weather Icon" />
+                        <h4>25°C</h4>
+                        <p>Cloudy</p>
+                    </li>
+                    <li>
+                        <p>13:00</p>
+                        <img src="http://openweathermap.org/img/wn/03n.png" alt="Weather Icon" />
+                        <h4>25°C</h4>
+                        <p>Cloudy</p>
+                    </li>
+                    <li>
+                        <p>13:00</p>
+                        <img src="http://openweathermap.org/img/wn/03n.png" alt="Weather Icon" />
+                        <h4>25°C</h4>
+                        <p>Cloudy</p>
+                    </li>
+                    <li>
+                        <p>13:00</p>
+                        <img src="http://openweathermap.org/img/wn/03n.png" alt="Weather Icon" />
+                        <h4>25°C</h4>
+                        <p>Cloudy</p>
+                    </li>
+                    <li>
+                        <p>13:00</p>
+                        <img src="http://openweathermap.org/img/wn/03n.png" alt="Weather Icon" />
+                        <h4>25°C</h4>
+                        <p>Cloudy</p>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <script src="/public/index.js" type="module"></script>
+    </body>
+</html>
