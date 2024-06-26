@@ -1,5 +1,9 @@
 <!DOCTYPE html>
-<html lang="en" class="dark">
+<html
+    lang="en"
+    class="bg-cover"
+    style="background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('/public/img/background.webp')"
+>
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -10,89 +14,117 @@
         <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet" />
         <link rel="stylesheet" href="/public/styles.css" />
     </head>
-    <body class="font-[Inter] dark:bg-gray-900 dark:text-gray-50 min-w-screen min-h-screen grid">
-        <main class="m-4 p-8 shadow-xl shadow-gray-800 rounded-sm text-center">
-            <div>
-                <h3 class="text-sm">Yet Another</h3>
-                <h1 class="text-3xl font-bold">Weather App</h1>
+    <body class="font-[Inter] min-w-screen min-h-screen grid">
+        <main class="m-4 bg-white bg-opacity-10 rounded-xl backdrop-blur-sm filter text-white border border-gray-500">
+            <div class="flex max-md:flex-col h-full">
+                <div class="basis-1/4 p-4 lg:p-8 border-r border-gray-400 max-lg:text-center">
+                    <form class="mt-8 flex place-content-center gap-2 border-b pb-2" id="searchForm">
+                        <input
+                            class="rounded-lg px-2 py-1 bg-white bg-opacity-0 text-sm w-full"
+                            type="text"
+                            id="city"
+                            name="city"
+                            placeholder="Jakarta"
+                        />
+                        <button
+                            class="rounded-lg bg-white bg-opacity-40 px-2 lowercase text-sm hover:scale-110 transition-all"
+                            id="search"
+                            type="submit"
+                        >
+                            Find!
+                        </button>
+                    </form>
+                    <p class="text-red-300 opacity-60 text-xs italic w-fit mx-auto mt-2" id="error"></p>
 
-                <div class="mt-8">
-                    <h3 class="text-lg" id="cityTitle">Jakarta</h3>
-                    <img
-                        class="w-48 mx-auto"
-                        id="icon"
-                        src="http://openweathermap.org/img/wn/03n@4x.png"
-                        alt="Weather Icon"
-                    />
-                    <h2 class="text-5xl font-bold" id="temperature">25°C</h2>
-                    <p class="mt-4" id="status">Rain</p>
-                    <p class="italic opacity-75 text-xs" id="description">Light rain</p>
-                    <ul
-                        class="w-fit mt-4 flex gap-4 p-2 bg-gray-800 bg-opacity-50 border border-gray-600 rounded-sm shadow-lg place-content-center mx-auto"
-                    >
-                        <li id="windspeed">Wind Speed : - m/s</li>
-                        <li id="humidity">Humidity : - %</li>
-                        <li id="pressure">Pressure : - hPa</li>
-                    </ul>
+                    <div class="mt-8">
+                        <h3 class="text-xs text-white text-opacity-50 italic">Weather in</h3>
+                        <h3 class="text-xl" id="cityTitle">Jakarta</h3>
+                        <div class="flex gap-2 place-content-center md:items-center">
+                            <h2 class="text-5xl my-8 font-thin" id="temperature">25°C</h2>
+                            <img
+                                class="h-16 my-auto"
+                                id="icon"
+                                src="http://openweathermap.org/img/wn/03n@4x.png"
+                                alt="Weather Icon"
+                            />
+                        </div>
+                        <ul
+                            class="w-full mt-4 flex flex-col gap-3 p-4 bg-white bg-opacity-10 border border-gray-400 rounded-sm shadow-lg text-xs"
+                        >
+                            <div class="flex place-content-center md:items-center gap-2">
+                                <svg
+                                    class="h-6"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    width="32"
+                                    height="32"
+                                    viewBox="0 0 256 256"
+                                >
+                                    <path
+                                        fill="currentColor"
+                                        d="M24 104a12 12 0 0 1 0-24h96a12 12 0 0 0 0-24a15.07 15.07 0 0 0-10.26 4.45a12 12 0 0 1-17-16.9A39.34 39.34 0 0 1 120 32a36 36 0 0 1 0 72Zm184-36a39.34 39.34 0 0 0-27.3 11.55a12 12 0 0 0 17 16.9A15.07 15.07 0 0 1 208 92a12 12 0 0 1 0 24H32a12 12 0 0 0 0 24h176a36 36 0 0 0 0-72m-56 84H40a12 12 0 0 0 0 24h112a12 12 0 0 1 0 24a15.1 15.1 0 0 1-10.27-4.45a12 12 0 1 0-17 16.9A39.34 39.34 0 0 0 152 224a36 36 0 0 0 0-72"
+                                    />
+                                </svg>
+                                <li id="windspeed">Wind speed : - m/s</li>
+                            </div>
+                            <div class="flex place-content-center md:items-center gap-2">
+                                <svg
+                                    class="h-6"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    width="32"
+                                    height="32"
+                                    viewBox="0 0 32 32"
+                                >
+                                    <path
+                                        fill="currentColor"
+                                        d="M23.476 13.993L16.847 3.437a1.04 1.04 0 0 0-1.694 0L8.494 14.044A10 10 0 0 0 7 19a9 9 0 0 0 18 0a10.06 10.06 0 0 0-1.524-5.007M16 26a7.01 7.01 0 0 1-7-7a8 8 0 0 1 1.218-3.943l.935-1.49l10.074 10.074A6.98 6.98 0 0 1 16 26.001"
+                                    />
+                                </svg>
+                                <li id="humidity">Humidity : - %</li>
+                            </div>
+                            <div class="flex place-content-center md:items-center gap-2">
+                                <svg
+                                    class="h-6"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    width="32"
+                                    height="32"
+                                    viewBox="0 0 32 32"
+                                >
+                                    <path fill="currentColor" d="M22 30H10v-5H6l10-9l10 9h-4zm-6-14L6 7h4V2h12v5h4z" />
+                                </svg>
+                                <li id="pressure">Pressure : - hPa</li>
+                            </div>
+                        </ul>
+                    </div>
                 </div>
 
-                <form class="mt-8 flex place-content-center gap-2" id="searchForm">
-                    <input
-                        class="rounded-sm px-2 py-1 bg-gray-800 text-sm"
-                        type="text"
-                        id="city"
-                        name="city"
-                        placeholder="City"
-                    />
-                    <button
-                        class="rounded-sm bg-gradient-to-br from-blue-500 to-blue-600 px-2 lowercase text-sm hover:scale-110 transition-all"
-                        id="search"
-                        type="submit"
-                    >
-                        Find!
-                    </button>
-                </form>
-                <p class="text-red-400 opacity-75 text-xs" id="error"></p>
+                <div class="max-lg:mt-6 p-4 lg:p-16">
+                    <div>
+                        <h3 class="uppercase font-thin text-sm">Yet Another</h3>
+                        <h3 class="uppercase font-bold">Weather App</h3>
+                        <a href="https://github.com/jo0707" target="_blank" class="uppercase underline text-xs italic opacity-50">~ jo0707</a>
+                    </div>
 
-                <!-- show forecast in 5 items -->
-                <div class="mt-4 bg-gray-800 bg-opacity-50 rounded-sm p-4 w-min mx-auto" id="forecastContainer">
-                    <h4 class="text-start">Forecasts</h4>
-                    <ul class="flex place-content-center gap-8">
-                        <li class="rounded-sm bg-gradient-to-br from-blue-500 to-blue-600 bg-opacity-0 p-2">
-                            <p>13:00</p>
-                            <img src="http://openweathermap.org/img/wn/03n.png" alt="Weather Icon" />
-                            <h4>25°C</h4>
-                            <p>Cloudy</p>
-                        </li>
-                        <li>
-                            <p>13:00</p>
-                            <img src="http://openweathermap.org/img/wn/03n.png" alt="Weather Icon" />
-                            <h4>25°C</h4>
-                            <p>Cloudy</p>
-                        </li>
-                        <li>
-                            <p>13:00</p>
-                            <img src="http://openweathermap.org/img/wn/03n.png" alt="Weather Icon" />
-                            <h4>25°C</h4>
-                            <p>Cloudy</p>
-                        </li>
-                        <li>
-                            <p>13:00</p>
-                            <img src="http://openweathermap.org/img/wn/03n.png" alt="Weather Icon" />
-                            <h4>25°C</h4>
-                            <p>Cloudy</p>
-                        </li>
-                        <li>
-                            <p>13:00</p>
-                            <img src="http://openweathermap.org/img/wn/03n.png" alt="Weather Icon" />
-                            <h4>25°C</h4>
-                            <p>Cloudy</p>
-                        </li>
-                    </ul>
+                    <div class="mt-8">
+                        <p class="text-3xl sm:text-6xl font-semibold" id="status">Rain</p>
+                        <p class="text-2xl sm:text-lg italic capitalize" id="description">Light rain</p>
+                    </div>
+
+                    <div>
+                        <!-- create full date and time and timezone here -->
+                        <p class="text-xs mt-8" id="date">Monday, 20 September 2021</p>
+                    </div>
+
+                    <!-- show forecast in 5 items -->
+                    <div class="mt-8 bg-white bg-opacity-10 rounded border border-gray-300 p-4 w-full md:w-fit mx-auto">
+                        <h4 class="text-start">Weather Forecasts</h4>
+                        <ul id="forecastList" class="mt-4 max-md:flex-col flex place-content-center gap-8 text-center w-full"></ul>
+                    </div>
                 </div>
             </div>
         </main>
 
+        <!-- preload class -->
+        <div class="hidden rounded bg-white bg-opacity-10 p-4"></div>
         <script src="/public/index.js" type="module"></script>
     </body>
 </html>

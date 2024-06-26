@@ -18,7 +18,9 @@ const windspeedEl = document.getElementById("windspeed");
 const humidityEl = document.getElementById("humidity");
 const pressureEl = document.getElementById("pressure");
 const searchFormEl = document.getElementById("searchForm");
+const dateEl = document.getElementById("date");
 const errorEl = document.getElementById("error");
+const forecastListEl = document.getElementById("forecastList");
 function fetchWeatherForecast(cityName, apiKey = API_KEY) {
     return __awaiter(this, void 0, void 0, function* () {
         const endpoint = `${API_URL}/?units=metric&q=${cityName}&appid=${apiKey}`;
@@ -36,6 +38,21 @@ function fetchWeatherForecast(cityName, apiKey = API_KEY) {
         return null;
     });
 }
+function createForecastElement(hourly) {
+    var _a, _b, _c, _d;
+    const forecastEl = document.createElement("li");
+    forecastEl.classList.add("rounded", "bg-white", "bg-opacity-10", "p-4");
+    const time = hourly.dt_txt.slice(11, 16);
+    const temperature = hourly.main.temp.toFixed(0);
+    const status = (_b = (_a = hourly.weather[0]) === null || _a === void 0 ? void 0 : _a.main) !== null && _b !== void 0 ? _b : "N/A";
+    const icon = (_d = (_c = hourly.weather[0]) === null || _c === void 0 ? void 0 : _c.icon) !== null && _d !== void 0 ? _d : "01d";
+    forecastEl.innerHTML = `
+        <p>${time}</p>
+        <img class=\"mx-auto\" src="http://openweathermap.org/img/wn/${icon}.png" alt="${status}">
+        <p>${temperature}°C</p>
+    `;
+    return forecastEl;
+}
 function displayWeather(response) {
     var _a, _b, _c, _d, _e, _f, _g, _h, _j, _k;
     return __awaiter(this, void 0, void 0, function* () {
@@ -51,14 +68,26 @@ function displayWeather(response) {
         const humidity = (_g = firstItem === null || firstItem === void 0 ? void 0 : firstItem.main.humidity.toFixed(0)) !== null && _g !== void 0 ? _g : "N/A";
         const pressure = (_h = firstItem === null || firstItem === void 0 ? void 0 : firstItem.main.pressure.toFixed(0)) !== null && _h !== void 0 ? _h : "N/A";
         const icon = (_k = (_j = firstItem === null || firstItem === void 0 ? void 0 : firstItem.weather[0]) === null || _j === void 0 ? void 0 : _j.icon) !== null && _k !== void 0 ? _k : "01d";
-        cityTitleEl.textContent = city;
-        temperatureEl.textContent = `${temperature}°C`;
-        statusEl.textContent = status;
-        descriptionEl.textContent = description;
-        windspeedEl.textContent = `Wind Speed: ${windSpeed} m/s`;
-        humidityEl.textContent = `Humidity: ${humidity}%`;
-        pressureEl.textContent = `Pressure: ${pressure} hPa`;
-        iconEl.src = `http://openweathermap.org/img/wn/${icon}@4x.png`;
+        try {
+            cityTitleEl.textContent = city;
+            temperatureEl.textContent = `${temperature}°C`;
+            statusEl.textContent = status;
+            descriptionEl.textContent = description;
+            windspeedEl.textContent = `Wind Speed: ${windSpeed} m/s`;
+            humidityEl.textContent = `Humidity: ${humidity}%`;
+            pressureEl.textContent = `Pressure: ${pressure} hPa`;
+            iconEl.src = `http://openweathermap.org/img/wn/${icon}@4x.png`;
+        }
+        catch (error) {
+            console.log("Error displaying weather data:", error);
+        }
+        forecastListEl.innerHTML = "";
+        console.log(response);
+        response.list.slice(1, 6).forEach((hourly) => {
+            console.log(hourly.dt_txt.slice(11, 16));
+            const forecastEl = createForecastElement(hourly);
+            forecastListEl.appendChild(forecastEl);
+        });
     });
 }
 function displayError(message) {
@@ -86,5 +115,8 @@ fetchWeatherForecast("Jakarta").then((response) => {
         displayError("We cant find that city :(");
     }
 });
+setInterval(() => {
+    dateEl.textContent = new Date().toDateString() + ", " + new Date().toLocaleTimeString();
+}, 1000);
 export {};
 //# sourceMappingURL=index.js.map
