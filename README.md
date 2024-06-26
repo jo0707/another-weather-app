@@ -21,6 +21,7 @@ Web : [Yet Another Weather App](https://qr-gen-nu.vercel.app/)
 ## Run & Build
 
 index.html is the main file
+
 /src/index.ts is the main typescript file
 
 ```bash
@@ -32,4 +33,5 @@ npm install
 npm dev
 ```
 
-Great! now Tailwind and Typesript will watch for changes and update the `dist` folder.
+Great! to run the site, use Live Server extension or manually opening it in browser.
+Now Tailwind and Typesript will watch for changes and update the `dist` folder.
