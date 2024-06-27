@@ -10,7 +10,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 const API_KEY = "83397f920b3d9223fac7762d5869250e";
 const API_URL = "https://api.openweathermap.org/data/2.5/forecast";
 const cityTitleEl = document.getElementById("cityTitle");
-const iconEl = document.getElementById("weatherIcon");
+const iconEl = document.getElementById("icon");
 const temperatureEl = document.getElementById("temperature");
 const statusEl = document.getElementById("status");
 const descriptionEl = document.getElementById("description");
@@ -76,7 +76,7 @@ function displayWeather(response) {
             windspeedEl.textContent = `Wind Speed: ${windSpeed} m/s`;
             humidityEl.textContent = `Humidity: ${humidity}%`;
             pressureEl.textContent = `Pressure: ${pressure} hPa`;
-            iconEl.src = `http://openweathermap.org/img/wn/${icon}@4x.png`;
+            iconEl.src = `https://openweathermap.org/img/wn/${icon}@4x.png`;
         }
         catch (error) {
             console.log("Error displaying weather data:", error);

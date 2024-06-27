@@ -16,13 +16,13 @@
 
 ## App
 
-Web : [Yet Another Weather App](https://qr-gen-nu.vercel.app/)
+Web : [Yet Another Weather App](https://jo0707.github.io/another-weather-app/)
 
 ## Run & Build
 
-index.html is the main file
+`[index.html]` is the main file
 
-/src/index.ts is the main typescript file
+`[/src/index.ts]` is the main typescript file
 
 ```bash
 git clone https://github.com/jo0707/another-weather-app
@@ -34,4 +34,4 @@ npm dev
 ```
 
 Great! to run the site, use Live Server extension or manually opening it in browser.
-Now Tailwind and Typesript will watch for changes and update the `dist` folder.
+Now Tailwind and Typesript will watch for changes and update the `[public]` folder.

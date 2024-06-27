@@ -7,7 +7,7 @@ const API_URL = "https://api.openweathermap.org/data/2.5/forecast"
 // http://openweathermap.org/img/wn/{icon}.png
 
 const cityTitleEl = document.getElementById("cityTitle") as HTMLHeadingElement
-const iconEl = document.getElementById("weatherIcon") as HTMLImageElement
+const iconEl = document.getElementById("icon") as HTMLImageElement
 const temperatureEl = document.getElementById("temperature") as HTMLHeadingElement
 const statusEl = document.getElementById("status") as HTMLParagraphElement
 const descriptionEl = document.getElementById("description") as HTMLParagraphElement
@@ -78,7 +78,7 @@ async function displayWeather(response: HourlyResponse) {
         windspeedEl.textContent = `Wind Speed: ${windSpeed} m/s`
         humidityEl.textContent = `Humidity: ${humidity}%`
         pressureEl.textContent = `Pressure: ${pressure} hPa`
-        iconEl.src = `http://openweathermap.org/img/wn/${icon}@4x.png`
+        iconEl.src = `https://openweathermap.org/img/wn/${icon}@4x.png`
     } catch (error) {
         console.log("Error displaying weather data:", error)
     }
